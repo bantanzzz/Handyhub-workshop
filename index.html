@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Rental Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                Tool Rental Hub
+            </div>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#rental">Rental</a></li>
+                <li><a href="#payment">Payment</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Tool Rental Hub</h1>
+                <p>Your one-stop solution for affordable tool rentals</p>
+                <a href="#rental" class="cta-button">Explore Tools</a>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Empowering communities through accessible tool rentals</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Our Mission</h3>
+                        <p>At Tool Rental Hub, we believe that everyone should have access to quality tools without the burden of ownership. Our mission is to provide affordable, reliable tool rental services to our community.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-history"></i>
+                        <h3>Our Story</h3>
+                        <p>Founded in 2024, Tool Rental Hub began with a simple idea: to make quality tools accessible to everyone. We noticed that many people needed tools for occasional projects but couldn't justify the cost of purchasing them.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li>Quality tools maintained to the highest standards</li>
+                            <li>Affordable daily and weekly rental rates</li>
+                            <li>Expert advice and support</li>
+                            <li>Convenient online booking system</li>
+                            <li>Flexible rental periods</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/about-image.jpg" alt="Professional craftsman">
+                </div>
+            </div>
+        </section>
+
+        <section id="rental" class="rental">
+            <div class="section-header">
+                <h2>Available Tools</h2>
+                <p>Browse our selection of quality tools available for rent</p>
+            </div>
+            <div class="rental-filters">
+                <select class="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="power">Power Tools</option>
+                    <option value="hand">Hand Tools</option>
+                    <option value="garden">Garden Tools</option>
+                </select>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search tools...">
+                </div>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="drill.jpg" alt="Power Drill">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Power Drill</h3>
+                        <p class="tool-description">Professional grade power drill with multiple speed settings</p>
+                        <p class="tool-price">SLL 50,000/day</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="hammer.jpg" alt="Hammer">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Hammer</h3>
+                        <p class="tool-description">Professional grade hammer for various construction tasks</p>
+                        <p class="tool-price">SLL 30,000/day</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="saw.jpg" alt="Saw">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Saw</h3>
+                        <p class="tool-description">Professional grade saw for cutting and shaping wood</p>
+                        <p class="tool-price">SLL 40,000/day</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="payment" class="payment">
+            <div class="section-header">
+                <h2>Payment & Policies</h2>
+                <p>Simple and secure payment options for your tool rentals</p>
+            </div>
+            <div class="payment-content">
+                <div class="payment-methods">
+                    <div class="payment-method-card">
+                        <i class="fas fa-credit-card"></i>
+                        <h3>Credit/Debit Cards</h3>
+                        <p>Visa, MasterCard, American Express</p>
+                    </div>
+                    <div class="payment-method-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Payments</h3>
+                        <p>Apple Pay, Google Pay, Mobile Money</p>
+                    </div>
+                    <div class="payment-method-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Cash</h3>
+                        <p>Available at our physical location</p>
+                    </div>
+                </div>
+                <div class="rental-policies">
+                    <h3>Rental Policies</h3>
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>Rental Duration</h4>
+                            <p>1-30 days with flexible extensions</p>
+                        </div>
+                        <div class="policy-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Security Deposit</h4>
+                            <p>Refundable deposit for certain tools</p>
+                        </div>
+                        <div class="policy-card">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h4>Late Returns</h4>
+                            <p>20% daily fee for late returns</p>
+                        </div>
+                        <div class="policy-card">
+                            <i class="fas fa-tools"></i>
+                            <h4>Damage Policy</h4>
+                            <p>Return tools in same condition</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@toolrentalhub.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Tool Street, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rental">Rental</a></li>
+                    <li><a href="#payment">Payment</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Tool Rental Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
