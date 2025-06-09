@@ -6,6 +6,239 @@
     <title>Tool Rental Hub</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tool-count {
+            margin-left: 15px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .tool-count span {
+            font-weight: bold;
+            color: #333;
+        }
+        .shop {
+            padding: 4rem 2rem;
+            background-color: #f9f9f9;
+        }
+        .tool-features {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .tool-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .buy-button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buy-button:hover {
+            background-color: #27ae60;
+        }
+        .shop-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .category-filter,
+        .price-filter {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .category-filter:hover,
+        .price-filter:hover {
+            border-color: #007bff;
+        }
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 300px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .tool-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .tool-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .tool-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .tool-card:hover .tool-image img {
+            transform: scale(1.1);
+        }
+        .tool-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tool-card:hover .tool-overlay {
+            opacity: 1;
+        }
+        .buy-button,
+        .compare-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .buy-button {
+            background: #007bff;
+            color: white;
+        }
+        .compare-button {
+            background: white;
+            color: #333;
+        }
+        .buy-button:hover {
+            background: #0056b3;
+        }
+        .compare-button:hover {
+            background: #f8f9fa;
+        }
+        .tool-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .tool-info {
+            padding: 1.5rem;
+        }
+        .tool-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .tool-rating {
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+        .tool-rating span {
+            color: #666;
+            margin-left: 0.5rem;
+        }
+        .tool-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .tool-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .tool-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .tool-features span {
+            background: #f8f9fa;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .tool-features i {
+            margin-right: 0.25rem;
+            color: #007bff;
+        }
+        .tool-warranty {
+            font-size: 0.9rem;
+            color: #28a745;
+        }
+        .tool-warranty i {
+            margin-right: 0.25rem;
+        }
+        @media (max-width: 768px) {
+            .shop-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-group {
+                flex-direction: column;
+            }
+            .search-box {
+                max-width: none;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,6 +251,7 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#rental">Rental</a></li>
+                <li><a href="#shop">Shop</a></li>
                 <li><a href="#payment">Payment</a></li>
                 <li><a href="#checkout" class="checkout-link">Checkout <span class="cart-count">0</span></a></li>
             </ul>
@@ -67,7 +301,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/about-image.jpg" alt="Professional craftsman">
+                    <img src="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?w=800&h=600&fit=crop" alt="Professional craftsman at work">
                 </div>
             </div>
         </section>
@@ -88,11 +322,14 @@
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search tools...">
                 </div>
+                <div class="tool-count">
+                    <span id="visible-tools-count">3</span> tools found
+                </div>
             </div>
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card" data-category="power">
                     <div class="tool-image">
-                        <img src="drill.jpg" alt="Power Drill">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Power Drill with multiple speed settings">
                         <div class="tool-overlay">
                             <button class="rent-button">Rent Now</button>
                         </div>
@@ -103,9 +340,38 @@
                         <p class="tool-price">SLL 50,000/day</p>
                     </div>
                 </div>
-                <div class="tool-card">
+
+                <div class="tool-card" data-category="power">
                     <div class="tool-image">
-                        <img src="hammer.jpg" alt="Hammer">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Circular Saw">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Circular Saw</h3>
+                        <p class="tool-description">Heavy-duty circular saw for precise wood cutting</p>
+                        <p class="tool-price">SLL 60,000/day</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="power">
+                    <div class="tool-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Angle Grinder">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Angle Grinder</h3>
+                        <p class="tool-description">Professional angle grinder for cutting and grinding</p>
+                        <p class="tool-price">SLL 55,000/day</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="hand">
+                    <div class="tool-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Hammer">
                         <div class="tool-overlay">
                             <button class="rent-button">Rent Now</button>
                         </div>
@@ -116,17 +382,278 @@
                         <p class="tool-price">SLL 30,000/day</p>
                     </div>
                 </div>
-                <div class="tool-card">
+
+                <div class="tool-card" data-category="hand">
                     <div class="tool-image">
-                        <img src="saw.jpg" alt="Saw">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Hammer Set">
                         <div class="tool-overlay">
                             <button class="rent-button">Rent Now</button>
                         </div>
                     </div>
                     <div class="tool-info">
-                        <h3>Saw</h3>
-                        <p class="tool-description">Professional grade saw for cutting and shaping wood</p>
+                        <h3>Hammer Set</h3>
+                        <p class="tool-description">Complete set of professional hammers</p>
+                        <p class="tool-price">SLL 25,000/day</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="hand">
+                    <div class="tool-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Wrench Set">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Wrench Set</h3>
+                        <p class="tool-description">Complete set of professional wrenches</p>
+                        <p class="tool-price">SLL 35,000/day</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="garden">
+                    <div class="tool-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Lawn Mower">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Lawn Mower</h3>
+                        <p class="tool-description">Powerful lawn mower for professional landscaping</p>
+                        <p class="tool-price">SLL 70,000/day</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="garden">
+                    <div class="tool-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Hedge Trimmer">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Hedge Trimmer</h3>
+                        <p class="tool-description">Professional hedge trimmer for perfect hedges</p>
+                        <p class="tool-price">SLL 45,000/day</p>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="garden">
+                    <div class="tool-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/31/14/42/icon-2024120_1280.png" alt="Professional Leaf Blower">
+                        <div class="tool-overlay">
+                            <button class="rent-button">Rent Now</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Leaf Blower</h3>
+                        <p class="tool-description">Powerful leaf blower for efficient yard cleanup</p>
                         <p class="tool-price">SLL 40,000/day</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" class="shop">
+            <div class="section-header">
+                <h2>Shop Tools</h2>
+                <p>Purchase quality tools for your permanent collection</p>
+            </div>
+            <div class="shop-filters">
+                <div class="filter-group">
+                    <select class="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="power">Power Tools</option>
+                        <option value="hand">Hand Tools</option>
+                        <option value="garden">Garden Tools</option>
+                    </select>
+                    <select class="price-filter">
+                        <option value="all">All Prices</option>
+                        <option value="0-500000">Under SLL 500,000</option>
+                        <option value="500000-1000000">SLL 500,000 - 1,000,000</option>
+                        <option value="1000000+">Over SLL 1,000,000</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search tools...">
+                </div>
+                <div class="tool-count">
+                    <span id="shop-tools-count">6</span> tools found
+                </div>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card" data-category="power" data-price="1500000">
+                    <div class="tool-image">
+                        <img src="images/drill.jpg" alt="Professional Power Drill">
+                        <div class="tool-overlay">
+                            <button class="buy-button">Buy Now</button>
+                            <button class="compare-button">Compare</button>
+                        </div>
+                        <div class="tool-badge">Best Seller</div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Professional Power Drill</h3>
+                        <div class="tool-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <p class="tool-description">High-performance power drill with multiple speed settings and battery included</p>
+                        <p class="tool-price">SLL 1,500,000</p>
+                        <div class="tool-features">
+                            <span><i class="fas fa-bolt"></i> 20V Battery</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 1500 RPM</span>
+                            <span><i class="fas fa-weight"></i> 2.5 kg</span>
+                        </div>
+                        <div class="tool-warranty">
+                            <i class="fas fa-shield-alt"></i> 2 Year Warranty
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="hand" data-price="450000">
+                    <div class="tool-image">
+                        <img src="images/hammer.jpg" alt="Professional Hammer Set">
+                        <div class="tool-overlay">
+                            <button class="buy-button">Buy Now</button>
+                            <button class="compare-button">Compare</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Professional Hammer Set</h3>
+                        <div class="tool-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="tool-description">Complete hammer set with 3 different sizes and carrying case</p>
+                        <p class="tool-price">SLL 450,000</p>
+                        <div class="tool-features">
+                            <span><i class="fas fa-ruler"></i> 16oz, 20oz, 24oz</span>
+                            <span><i class="fas fa-box"></i> Case Included</span>
+                            <span><i class="fas fa-shield-alt"></i> 2 Year Warranty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="garden" data-price="2500000">
+                    <div class="tool-image">
+                        <img src="images/lawnmower.jpg" alt="Professional Lawn Mower">
+                        <div class="tool-overlay">
+                            <button class="buy-button">Buy Now</button>
+                            <button class="compare-button">Compare</button>
+                        </div>
+                        <div class="tool-badge">Premium</div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Professional Lawn Mower</h3>
+                        <div class="tool-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <p class="tool-description">Self-propelled lawn mower with 21-inch cutting deck</p>
+                        <p class="tool-price">SLL 2,500,000</p>
+                        <div class="tool-features">
+                            <span><i class="fas fa-gas-pump"></i> Gas Powered</span>
+                            <span><i class="fas fa-ruler-combined"></i> 21" Deck</span>
+                            <span><i class="fas fa-shield-alt"></i> 3 Year Warranty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="power" data-price="1800000">
+                    <div class="tool-image">
+                        <img src="images/saw.jpg" alt="Professional Circular Saw">
+                        <div class="tool-overlay">
+                            <button class="buy-button">Buy Now</button>
+                            <button class="compare-button">Compare</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Professional Circular Saw</h3>
+                        <div class="tool-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="tool-description">Heavy-duty circular saw with laser guide and dust collection</p>
+                        <p class="tool-price">SLL 1,800,000</p>
+                        <div class="tool-features">
+                            <span><i class="fas fa-bolt"></i> 15 Amp Motor</span>
+                            <span><i class="fas fa-ruler"></i> 7-1/4" Blade</span>
+                            <span><i class="fas fa-shield-alt"></i> 2 Year Warranty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="hand" data-price="350000">
+                    <div class="tool-image">
+                        <img src="images/screwdriver.jpg" alt="Professional Screwdriver Set">
+                        <div class="tool-overlay">
+                            <button class="buy-button">Buy Now</button>
+                            <button class="compare-button">Compare</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Professional Screwdriver Set</h3>
+                        <div class="tool-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <p class="tool-description">Complete set of 32 professional screwdrivers with magnetic tips</p>
+                        <p class="tool-price">SLL 350,000</p>
+                        <div class="tool-features">
+                            <span><i class="fas fa-tools"></i> 32 Pieces</span>
+                            <span><i class="fas fa-magnet"></i> Magnetic Tips</span>
+                            <span><i class="fas fa-shield-alt"></i> Lifetime Warranty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-category="garden" data-price="1200000">
+                    <div class="tool-image">
+                        <img src="images/hedgetrimmer.jpg" alt="Professional Hedge Trimmer">
+                        <div class="tool-overlay">
+                            <button class="buy-button">Buy Now</button>
+                            <button class="compare-button">Compare</button>
+                        </div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Professional Hedge Trimmer</h3>
+                        <div class="tool-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="tool-description">Double-sided hedge trimmer with 24-inch blade</p>
+                        <p class="tool-price">SLL 1,200,000</p>
+                        <div class="tool-features">
+                            <span><i class="fas fa-bolt"></i> Electric Powered</span>
+                            <span><i class="fas fa-ruler"></i> 24" Blade</span>
+                            <span><i class="fas fa-shield-alt"></i> 2 Year Warranty</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -244,6 +771,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#rental">Rental</a></li>
+                    <li><a href="#shop">Shop</a></li>
                     <li><a href="#payment">Payment</a></li>
                 </ul>
             </div>
@@ -282,6 +810,42 @@
         const cartCount = document.querySelector('.cart-count');
         const cartItems = document.querySelector('.cart-items');
         const totalAmount = document.getElementById('total-amount');
+        const toolsGrid = document.querySelector('.tools-grid');
+        const searchInput = document.querySelector('.search-box input');
+        const categoryFilter = document.querySelector('.category-filter');
+
+        // Store all tools for filtering
+        const allTools = Array.from(document.querySelectorAll('.tool-card'));
+
+        // Search and filter functionality
+        function filterTools() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            let visibleCount = 0;
+
+            allTools.forEach(tool => {
+                const toolName = tool.querySelector('h3').textContent.toLowerCase();
+                const toolDescription = tool.querySelector('.tool-description').textContent.toLowerCase();
+                const toolCategory = tool.dataset.category || 'all';
+
+                const matchesSearch = toolName.includes(searchTerm) || toolDescription.includes(searchTerm);
+                const matchesCategory = selectedCategory === 'all' || toolCategory === selectedCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    tool.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    tool.style.display = 'none';
+                }
+            });
+
+            // Update the tool count display
+            document.getElementById('visible-tools-count').textContent = visibleCount;
+        }
+
+        // Add event listeners for search and category filter
+        searchInput.addEventListener('input', filterTools);
+        categoryFilter.addEventListener('change', filterTools);
 
         // Add to cart functionality
         document.querySelectorAll('.rent-button').forEach(button => {
@@ -398,6 +962,76 @@
         // Format CVV input
         document.getElementById('cvv').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Shop Section Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryFilter = document.querySelector('.category-filter');
+            const priceFilter = document.querySelector('.price-filter');
+            const searchInput = document.querySelector('.search-box input');
+            const toolCards = document.querySelectorAll('.tool-card');
+            const toolCount = document.getElementById('shop-tools-count');
+
+            function filterTools() {
+                const category = categoryFilter.value;
+                const price = priceFilter.value;
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                toolCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    const cardPrice = parseInt(card.dataset.price);
+                    const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                    const cardDescription = card.querySelector('.tool-description').textContent.toLowerCase();
+
+                    const categoryMatch = category === 'all' || cardCategory === category;
+                    const priceMatch = price === 'all' || 
+                        (price === '0-500000' && cardPrice < 500000) ||
+                        (price === '500000-1000000' && cardPrice >= 500000 && cardPrice <= 1000000) ||
+                        (price === '1000000+' && cardPrice > 1000000);
+                    const searchMatch = cardTitle.includes(searchTerm) || cardDescription.includes(searchTerm);
+
+                    if (categoryMatch && priceMatch && searchMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                toolCount.textContent = visibleCount;
+            }
+
+            categoryFilter.addEventListener('change', filterTools);
+            priceFilter.addEventListener('change', filterTools);
+            searchInput.addEventListener('input', filterTools);
+
+            // Buy Now Button Functionality
+            const buyButtons = document.querySelectorAll('.buy-button');
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolCard = this.closest('.tool-card');
+                    const toolName = toolCard.querySelector('h3').textContent;
+                    const toolPrice = toolCard.querySelector('.tool-price').textContent;
+                    
+                    // Here you would typically integrate with a shopping cart system
+                    alert(`Added to cart: ${toolName} - ${toolPrice}`);
+                });
+            });
+
+            // Compare Button Functionality
+            const compareButtons = document.querySelectorAll('.compare-button');
+            compareButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolCard = this.closest('.tool-card');
+                    const toolName = toolCard.querySelector('h3').textContent;
+                    
+                    // Here you would typically add to comparison list
+                    alert(`Added to comparison: ${toolName}`);
+                });
+            });
         });
     </script>
 </body>
